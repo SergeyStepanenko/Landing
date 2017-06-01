@@ -29,17 +29,47 @@ html, body
 	height: 100%
 
 body
-	font-size: 16px
-	min-width: 320px
-	position: relative
-	line-height: 1.75
-	font-family: $default-font
-	overflow-x: hidden
-	opacity: 1
+    font-family: $default-font
+.screen-1
+    background-image: url('../img/bgr.png')
+    background-size: cover
+    height: 768px
+    &__header
+        width: 100%
+        &__logo
+            width: 230px
+            height: 45px
+            float: left
+            position: absolute
+            top: 31px
+            left: 100px
+        &__logo p
+            font-family: $default-font
+            font-size: 14px
+            color: #fff
+            margin-top: 2px
+        &__contact
+            width: 315px
+            height: 50px
+            position: absolute
+            top: 31px
+            right: 100px
+        &__contact a
+            text-decoration: none
+            color: #fff
+            font-family: $default-font
+            font-size: 16px
+        &__contact span
+            margin-left: 10px
+            font: 13px $medium
+            padding: 9px 45px
+            border: 1px solid #fff
+            color: #fff
+            transition: all .19s ease-in-out
+        &__contact span:hover
+            background-color: #fff
+            transition: all .09s ease-in-out
+            color: #000
 
-.img-responsive
-	display: block
-	max-width: 100%
-	height: auto
 
 @import "media" // Всегда в конце
