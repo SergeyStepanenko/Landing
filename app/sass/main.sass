@@ -30,11 +30,18 @@ html, body
 
 body
     font-family: $default-font
+h1
+    font: 60px $medium !important
+    color: #fff
+h2
+    font: 24px $default-font !important
+    color: #fff
 .screen-1
     background-image: url('../img/bgr.png')
     background-size: cover
     height: 768px
     &__header
+        position: fixed
         width: 100%
         &__logo
             width: 230px
@@ -44,8 +51,7 @@ body
             top: 31px
             left: 100px
         &__logo p
-            font-family: $default-font
-            font-size: 14px
+            font: 14px $default-font
             color: #fff
             margin-top: 2px
         &__contact
@@ -57,8 +63,7 @@ body
         &__contact a
             text-decoration: none
             color: #fff
-            font-family: $default-font
-            font-size: 16px
+            font: 16px $default-font
         &__contact span
             margin-left: 10px
             font: 13px $medium
@@ -70,6 +75,44 @@ body
             background-color: #fff
             transition: all .09s ease-in-out
             color: #000
+    &__content
+        position: relative
+        top: 220px
+        &__main-text
+            width: 760px
+            text-align: center
+            margin: 0 auto
+            &__order
+                width: 190px
+                height: 50px
+                background-color: #578EDF
+                margin: 0 auto
+                transition: all .19s ease-in-out
+            &__order:hover
+                background-color: #4C80D6
+                transition: all .09s ease-in-out
+
+            &__order img
+                margin-top: 19px
+            &__order span
+                font: 15px $medium
+                margin-left: 15px
+            &-blue
+                color: #578EDF !important
+        &__main-text span
+            color: #fff
+        &__bottom-text
+            color: #B5B9BB
+            font: 14px $default-font
+            max-width: 1155px
+            margin: 200px auto 0 auto
+            text-align: center
+
+.space
+    &-1
+        height: 40px
+    &-2
+        height: 45px
 
 
 @import "media" // Всегда в конце
