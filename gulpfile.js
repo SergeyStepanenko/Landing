@@ -11,7 +11,8 @@ var gulp           = require('gulp'),
 		cache          = require('gulp-cache'),
 		autoprefixer   = require('gulp-autoprefixer'),
 		ftp            = require('vinyl-ftp'),
-		notify         = require("gulp-notify");
+		notify         = require("gulp-notify"),
+        babel          = require('gulp-babel');
 
 // Скрипты проекта
 
@@ -29,6 +30,7 @@ gulp.task('js', ['common-js'], function() {
 		'app/js/slider.js',
 		'app/js/common.min.js', // Всегда в конце
 		])
+    .pipe(babel({presets: ['es2015']}))
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify()) // Минимизировать весь js (на выбор)
 	.pipe(gulp.dest('app/js'))
@@ -48,7 +50,7 @@ gulp.task('browser-sync', function() {
 
 gulp.task('sass', function() {
 	return gulp.src('app/sass/**/*.sass')
-	.pipe(sass().on("error", notify.onError()))
+	.pipe(sass().on('error', notify.onError()))
 	.pipe(rename({suffix: '.min', prefix : ''}))
 	.pipe(autoprefixer(['last 15 versions']))
 	.pipe(cleanCSS())
@@ -60,7 +62,7 @@ gulp.task('sass', function() {
 
 gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
 	gulp.watch('app/sass/**/*.sass', ['sass']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
+	gulp.watch(['libs/**/*.js', 'app/js/common.js', 'app/js/slider.js'], ['js']);
 	gulp.watch('app/*.html', browserSync.reload);
 });
 

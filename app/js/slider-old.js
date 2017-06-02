@@ -1,6 +1,6 @@
 (function() {
   var image = document.querySelectorAll('.image'),
-      slider = document.querySelector('.slider'
+      slider = document.querySelector('.slider'),
       left = document.querySelector('#left'),
       right = document.querySelector('#right'),
       slider__window = document.querySelector('.slider__window'),
