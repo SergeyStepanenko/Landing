@@ -30,7 +30,7 @@ html, body
 
 body
     font-family: $default-font
-    overflow-x: hidden
+    // overflow-x: hidden
 h1
     font: 60px $medium !important
     color: #fff
@@ -146,27 +146,145 @@ h2
 
 .screen-4
     background-image: url('../img/bkgr.svg')
-    min-width: 1590px
-    background-size: cover
+    min-width: 1000px
+    background-size: 1600px
     background-repeat: no-repeat
     &__wrapper
-        width: 950px
+        width: 700px
         margin: 0 auto
         padding-top: 100px
         height: 500px
     &__profile-container
         &__img-wrapper
-            width: 307px
+            width: 200px
             height: 400px
             margin: 0 auto
             float: left
-            margin-right: 200px
+            margin-right: 100px
             margin-top: 50px
         &__text
             font: 16px $default-font
             color: #707478
             &__name
                 font: 18px $bold
+
+.screen-5
+    background-color: #F7F7F7
+    height: 800px
+    &__background
+        width: 597px
+        height: 307px
+        background-image: url('../img/AdWebPro-background.png')
+        background-repeat: no-repeat
+        margin: 0 auto
+        &__wrapper
+            width: 138px
+            margin: 0 auto
+    &__wrapper
+        width: 1105px
+        margin: 0 auto
+        &__block p
+            font: 16px $medium
+            color: #707478
+        &__block
+            width: 170px
+            height: 150px
+            float: left
+            text-align: center
+            &-1,
+            &-5
+                margin-top: -300px
+                height: 400px
+            &-2,
+            &-4
+                margin-top: -68px
+            &-3
+                margin: 0 127px
+                margin-top: 50px
+
+.screen-6
+    height: 845px
+    &__wrapper
+        width: 1200px
+        margin: 0 auto
+        &__logo
+            width: 240px
+            height: 150px
+            float: left
+            text-align: center
+            line-height: 300px
+        &__logo img
+            margin: auto
+            vertical-align: middle
+
+.screen-7 h4
+    width: 660px
+    text-align: center
+    color: #707478
+    font: 24px $default-font
+    margin-bottom: 20px
+.screen-7
+    background-color: #F7F7F7
+    height: 570px
+    &__wrapper
+        width: 1155px
+        margin: 0 auto
+        &__slider
+            width: 570px
+            height: 245px
+            // overflow: hidden
+            // transition: all 1s ease-in-out
+            background-color: #fff
+            float: left
+            &__inner
+                width: 50000px
+                height: 245px
+            &__arrow-left img
+                margin: auto
+                vertical-align: middle
+                padding: 20px
+            &__arrow-left
+                height: 245px
+                float: left
+                line-height: 245px
+            &__arrow-right img
+                margin: auto
+                vertical-align: middle
+                padding: 20px
+            &__arrow-right
+                height: 245px
+                line-height: 245px
+            &__item
+                width: 570px
+                height: 245px
+                float: left
+                position: relative
+                left: -570px
+                &__person img
+                    float: left
+                &__quote p
+                    font: 16px $default-font
+                    color: #707478
+                &__quote
+                    width: 420px
+                    height: 90px
+                    margin: 0 auto
+                    padding-top: 20px
+                &__person
+                    width: 300px
+                    height: 64px
+                    margin: 0 auto
+                    padding-top: 32px
+                    &__text
+                        margin-left: 80px
+                        padding-top: 10px
+                    &__text p
+                        font: 18px $bold
+                        color: #9A9EA0
+                    &__text p:last-child
+                        font: 16px $default-font
+
+
 
 
 .space
@@ -184,6 +302,8 @@ h2
         height: 35px
     &-7
         height: 20px
+    &-8
+        margin-bottom: -20px
 
 
 @import "media" // Всегда в конце

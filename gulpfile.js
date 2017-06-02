@@ -24,16 +24,16 @@ gulp.task('common-js', function() {
 	.pipe(gulp.dest('app/js'));
 });
 
-// gulp.task('js', ['common-js'], function() {
-// 	return gulp.src([
-// 		'app/libs/jquery/dist/jquery.min.js',
-// 		'app/js/common.min.js', // Всегда в конце
-// 		])
-// 	.pipe(concat('scripts.min.js'))
-// 	// .pipe(uglify()) // Минимизировать весь js (на выбор)
-// 	.pipe(gulp.dest('app/js'))
-// 	.pipe(browserSync.reload({stream: true}));
-// });
+gulp.task('js', ['common-js'], function() {
+	return gulp.src([
+		'app/js/slider.js',
+		'app/js/common.min.js', // Всегда в конце
+		])
+	.pipe(concat('scripts.min.js'))
+	.pipe(uglify()) // Минимизировать весь js (на выбор)
+	.pipe(gulp.dest('app/js'))
+	.pipe(browserSync.reload({stream: true}));
+});
 
 gulp.task('browser-sync', function() {
 	browserSync({
@@ -58,18 +58,18 @@ gulp.task('sass', function() {
 
 // старый watch с js
 
-// gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
-// 	gulp.watch('app/sass/**/*.sass', ['sass']);
-// 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
-// 	gulp.watch('app/*.html', browserSync.reload);
-// });
-
-//без конкатинации JS
-gulp.task('watch', ['sass', 'browser-sync'], function() {
+gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
 	gulp.watch('app/sass/**/*.sass', ['sass']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], browserSync.reload);
+	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
 	gulp.watch('app/*.html', browserSync.reload);
 });
+
+//без конкатинации JS
+// gulp.task('watch', ['sass', 'browser-sync'], function() {
+// 	gulp.watch('app/sass/**/*.sass', ['sass']);
+// 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], browserSync.reload);
+// 	gulp.watch('app/*.html', browserSync.reload);
+// });
 
 gulp.task('imagemin', function() {
 	return gulp.src('app/img/**/*')
