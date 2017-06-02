@@ -30,6 +30,7 @@ html, body
 
 body
     font-family: $default-font
+    overflow-x: hidden
 h1
     font: 60px $medium !important
     color: #fff
@@ -144,9 +145,29 @@ h2
     color: #fff
 
 .screen-4
-    height: 600px
+    background-image: url('../img/bkgr.svg')
+    min-width: 1590px
+    background-size: cover
+    background-repeat: no-repeat
+    &__wrapper
+        width: 950px
+        margin: 0 auto
+        padding-top: 100px
+        height: 500px
     &__profile-container
-        width: 790px
+        &__img-wrapper
+            width: 307px
+            height: 400px
+            margin: 0 auto
+            float: left
+            margin-right: 200px
+            margin-top: 50px
+        &__text
+            font: 16px $default-font
+            color: #707478
+            &__name
+                font: 18px $bold
+
 
 .space
     &-1
@@ -161,6 +182,8 @@ h2
         height: 30px
     &-6
         height: 35px
+    &-7
+        height: 20px
 
 
 @import "media" // Всегда в конце
