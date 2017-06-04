@@ -1,21 +1,28 @@
 (function() {
 	const slider = document.getElementById('slider')
-	const leftArrow = document.getElementById('left-test')
-	const rightArrow = document.getElementById('right-test')
+	const leftArrow = document.getElementById('left')
+	const rightArrow = document.getElementById('right')
 	const items = document.querySelectorAll('.screen-7__wrapper__slider__item')
-	let slidesShift
 	const itemWidth = 570
+	let slidesShift
 	let firstChild
 	let lastChild
 	let travel
 
-	rightArrow.addEventListener('click', moveToRight)
+	rightArrow.addEventListener('click', moveBlocks)
+	leftArrow.addEventListener('click', moveBlocks)
 
-
-	function moveToRight() {
-		rightArrow.removeEventListener('click', moveToRight)
+	function moveBlocks(event) {
+		const button = event.srcElement.id
+		leftArrow.removeEventListener('click', moveBlocks)
+		rightArrow.removeEventListener('click', moveBlocks)
 		slidesShift = Number(getComputedStyle(items[0]).getPropertyValue('left').replace('px', ''))
-		travel = slidesShift - itemWidth
+
+		if (button === 'right') {
+			travel = slidesShift - itemWidth
+		} else {
+			travel = slidesShift + itemWidth
+		}
 
 		for (let i = 0; i < items.length; i++) {
 			items[i].classList.add('animationON')
@@ -28,23 +35,21 @@
 			}
 
 			firstChild = slider.firstElementChild
-			slider.appendChild(firstChild)
+			lastChild = slider.lastElementChild
 
-			travel += itemWidth
+			if (button === 'right') {
+				slider.appendChild(firstChild)
+			} else {
+				slider.insertBefore(lastChild, slider.childNodes[0])
+			}
+			travel = -itemWidth
 
 			for (let i = 0; i < items.length; i++) {
 				items[i].style.left = travel + 'px'
 			}
 
-			lastChild = slider.lastElementChild
-			rightArrow.addEventListener('click', moveToRight)
-		}, 500)
+			leftArrow.addEventListener('click', moveBlocks)
+			rightArrow.addEventListener('click', moveBlocks)
+		}, 501)
 	}
-
-
-
-
-
-
-
 })()

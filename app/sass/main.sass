@@ -49,7 +49,7 @@ h2
             height: 45px
             float: left
             position: absolute
-            top: 31px
+            top: 15px
             left: 100px
         &__logo p
             font: 14px $default-font
@@ -59,7 +59,7 @@ h2
             width: 315px
             height: 50px
             position: absolute
-            top: 31px
+            top: 26px
             right: 100px
         &__contact a
             text-decoration: none
@@ -218,22 +218,20 @@ h2
             vertical-align: middle
 
 .screen-7 h4
-    width: 660px
-    text-align: center
     color: #707478
     font: 24px $default-font
-    margin-bottom: 20px
+    margin: 0 0 20px 300px
+
 .screen-7
     background-color: #F7F7F7
-    height: 570px
+    height: 525px
     &__wrapper
         width: 1155px
         margin: 0 auto
         &__slider
             width: 570px
             height: 245px
-            // overflow: hidden
-            // transition: all 1s ease-in-out
+            overflow: hidden
             background-color: #fff
             float: left
             &__inner
@@ -242,7 +240,7 @@ h2
             &__arrow-left img
                 margin: auto
                 vertical-align: middle
-                padding: 20px
+                margin: 20px
             &__arrow-left
                 height: 245px
                 float: left
@@ -250,7 +248,7 @@ h2
             &__arrow-right img
                 margin: auto
                 vertical-align: middle
-                padding: 20px
+                margin: 20px
             &__arrow-right
                 height: 245px
                 line-height: 245px
@@ -284,8 +282,14 @@ h2
                     &__text p:last-child
                         font: 16px $default-font
 
-#left
-	z-index: 1000
+#left:hover
+	background-image: url('../img/arrow-left-blue.png')
+	background-repeat: no-repeat
+	background-size: 27px
+#right:hover
+	background-image: url('../img/arrow-right-blue.png')
+	background-repeat: no-repeat
+	background-size: 27px
 
 .animationON
 	transition: all .5s ease-in-out
@@ -307,6 +311,54 @@ h2
         height: 20px
     &-8
         margin-bottom: -20px
+
+.screen-8
+	position: relative
+	top: -349px
+	left: 310px
+	width: 460px
+	margin: 0 auto
+	text-align: right
+	padding-left: 50px
+	&__contacts a
+		font: 24px $default-font
+		color: #707478
+	&__contacts img
+		margin: 0 3px
+	&__contacts
+		margin-bottom: 15px
+	&__wrapper
+		width: 407px
+		height: 210px
+		position: absolute
+		right: 0px
+	&__wrapper p
+		padding-top: 10px
+		text-align: left
+		font: 16px $default-font
+		color: #9A9EA0
+
+.footer
+	height: 87px
+	background-color: #3E4143
+	position: absolute
+	width: 100%
+	&__text
+		font: 16px $default-font
+		line-height: 87px
+		vertical-align: middle
+		text-align: center
+		color: #707478
+
+.screen-1__header__background
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	height: 70px
+	background-color: #3E4143
+	z-index: 0
+	opacity: .6
 
 
 @import "media" // Всегда в конце
