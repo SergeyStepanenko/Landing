@@ -6,7 +6,7 @@
 	let slidesShift
 	const itemWidth = 570
 	let firstChild
-	let lastChild = document.querySelector('.screen-7__wrapper__slider__inner :last-child')
+	let lastChild
 	let travel
 
 	rightArrow.addEventListener('click', moveToRight)
@@ -17,25 +17,26 @@
 		slidesShift = Number(getComputedStyle(items[0]).getPropertyValue('left').replace('px', ''))
 		travel = slidesShift - itemWidth
 
-		for (var j = 0; j < items.length; j++) {
-			items[j].classList.add('animationON')
-			items[j].style.left = travel + 'px'
+		for (let i = 0; i < items.length; i++) {
+			items[i].classList.add('animationON')
+			items[i].style.left = travel + 'px'
 		}
-		
+
 		setTimeout(function replaceLastSlideWithFirst() {
-			for (var i = 0; i < items.length; i++) {
+			for (let i = 0; i < items.length; i++) {
 				items[i].classList.remove('animationON')
 			}
 
-			firstChild = document.querySelector('.screen-7__wrapper__slider__inner :first-child')
-			slider.append(firstChild)
+			firstChild = slider.firstElementChild
+			slider.appendChild(firstChild)
 
 			travel += itemWidth
 
-			for (var y = 0; y < items.length; y++) {
-				items[y].style.left = travel + 'px'
+			for (let i = 0; i < items.length; i++) {
+				items[i].style.left = travel + 'px'
 			}
 
+			lastChild = slider.lastElementChild
 			rightArrow.addEventListener('click', moveToRight)
 		}, 500)
 	}
@@ -45,8 +46,5 @@
 
 
 
-
-		// // console.log(slidesShift)
-		// console.log(travel)
 
 })()
