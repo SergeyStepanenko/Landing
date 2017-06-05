@@ -1,0 +1,88 @@
+@import "fonts"
+@import "vars"
+
+.overlayPopUp
+    position: fixed
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
+.popUpWrapper,
+.popUpWrapperSuccess
+	position: fixed
+	top: 200px
+	left: 50%
+	margin-left: -170px
+
+.popUpContainer
+    position: relative
+    width: 340px
+    height: 340px
+    background-color: #FEFEFE
+    margin: 0 auto
+    z-index: 1000
+
+.closeButton
+	padding: 10px 20px
+	font-size: 20px
+	font-family: monospace
+	margin-left: 292px
+	line-height: 40px
+	color: black
+
+.popUpContainerInner
+    margin: 0px 40px 50px 40px
+
+.callMePopUp
+    display: flex
+    justify-content: center
+    margin: 0px 20px -20px 20px
+    color: #D80020
+    font-size: 22px
+    font-weight: bold
+    padding: 8px
+
+.popUpText
+	width: 225px
+	margin: 19px auto
+	font: 16px $default-font
+	text-align: center
+	color: #6F7377
+
+.form
+    margin: 23px 0 0 0px
+
+.inputName,
+.inputPhoneNumber
+	font: 16px $default-font
+	border: 1px solid #ECECEC
+	box-sizing: border-box
+	width: 212px
+	font-size: 16px
+	padding: 4px 8px
+	margin: 11px 0 11px 23px
+
+.submitData
+    margin: 11px 0 11px 23px
+    border: 2px solid #EAEAEA
+    color: #FEFEFE
+    background-color: #578EDF
+    font: 15px $medium
+    padding: 8px
+    width: 214px
+    transition: all .19s ease-in-out
+
+.popUpContainer
+	background-image: url('../img/pop-up-bkg.png')
+
+.submitData
+	height: 50px
+	text-align: right
+
+.submit-arrow
+	position: relative
+	left: -166px
+	top: 2px
