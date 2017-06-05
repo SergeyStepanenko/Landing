@@ -1,11 +1,13 @@
+"use strict";
+
 ;"use strict";
 (function popUp() {
   var div = document.createElement('div'),
       body = document.querySelector("body"),
       overlayPopUp = document.createElement('div'),
       popUpCover,
-	  closeButton,
-	  overlay,
+      closeButton,
+      overlay,
       closeButton2;
 
   overlayPopUp.className = "overlayPopUp";
@@ -18,9 +20,13 @@
   						<div class = 'popUpText'>Оставьте ваш email и номер телефона, мы перезвоним, чтобы обсудить ваш лендинг</div>\
   						<div class = 'form'>\
   							<form action='mail/index.php' id='myForm' method='post'>\
-                  <input class='inputName' name='email' placeholder='Введите ваш email' value=''>\
-  								<input class='inputPhoneNumber' placeholder='+7 (___) ___-__-__' name='phone' value=''>\
-  								<input class='submitData' onsubmit='yaCounter43150839.reachGoal(\"sendtrue\"); return true;' type='submit' value='ЗАКАЗАТЬ             '><img class='submit-arrow' src='../img/noun_711844_cc.png' alt=''>\
+                  				<input class='inputName' id='email' name='email' placeholder='Введите ваш email' value=''>\
+					  			<img class='success-icon' id='success-email' src='../img/success.png' alt=''>\
+								<p class='error' id='error-email'>Пожалуйста введите верный email</p>\
+  								<input class='inputPhoneNumber' id='phone' placeholder='+7 (___) ___-__-__' name='phone' value=''>\
+								<img class='success-icon' id='success-phone' src='../img/success.png' alt=''>\
+								<p class='error' id='error-phone'>Пожалуйста введите только цифры</p>\
+  								<input class='submitData' onsubmit='' type='submit' value='ЗАКАЗАТЬ             '><img class='submit-arrow' src='../img/noun_711844_cc.png' alt=''>\
   							</form>\
   		        </div>\
   		      </div>\
@@ -35,7 +41,7 @@
     body.style.overflow = "hidden";
 
     function append() {
-      body.appendChild(div);
+      //   body.appendChild(div);
       $("#myForm").submit(function () {
         // var error = "";
         // error += $(this).yaproField("phone", "p", "телефон введен неправильно");
@@ -58,7 +64,7 @@
         return false;
       });
 
-    //   fieldPhone("[name=phone]"); //форматирование номера
+      //   fieldPhone("[name=phone]"); //форматирование номера
     };
 
     setTimeout(append, 1);
@@ -71,32 +77,80 @@
       overlay.addEventListener('click', closePopUp, false);
     }, 1);
 
-    // document.querySelector('.inputName').addEventListener('click', resetStyleName, false);
-    // document.querySelector('.inputPhoneNumber').addEventListener('onmouseover', resetStylePhone, false);
+    var emailInput = document.querySelector('.inputName');
+    $('#email').on('change keydown paste input', emailCheck);
+
+    var emailIcon = document.getElementById('success-email');
+
+    function emailCheck() {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput.value)) {
+        emailIcon.classList.add('visible');
+		// emailErrorText.classList.remove('error-visible');
+        // return true;
+      } else {
+        emailIcon.classList.remove('visible');
+		// emailErrorText.classList.add('error-visible');
+        // return false;
+      }
+    }
+
+    $('#phone').on('change keyup paste input', phoneCheck);
+    var phoneInput = document.querySelector('.inputName');
+    var phoneIcon = document.getElementById('success-phone');
+    var phoneErrorText = document.getElementById('error-phone');
+    var emailErrorText = document.getElementById('error-email');
+
+	$(function(){
+	  $("#phone").mask("+7 (999) 999-99-99");
+	});
+
+    function phoneCheck(event) {
+      var phone = document.getElementById('phone').value;
+	  console.log(event.target.value);
+	  //
+	//   if (event.target.value.length < 1) {
+	// 	  document.getElementById('phone').value = '+7' + event.target.value;
+	//   }
+
+	//   document.getElementById('phone').value = '+7' + event.target.value;
+
+      if (phone.search(/[a-zа-яА-ЯёЁ]/g) === -1 && phone.charAt(phone.length - 1) !== '_') {
+        phoneIcon.classList.add('visible');
+        // phoneErrorText.classList.remove('error-visible');
+		// console.log(phone.charAt(phone.length - 1) !== '_');
+        // return true;
+      } else {
+        phoneIcon.classList.remove('visible');
+        // phoneErrorText.classList.add('error-visible');
+
+        // return false;
+      }
+    }
 
     document.querySelector('.submitData').onclick = function () {
+
       var customerName = document.querySelector('.inputName').value;
       var customerPhone = document.querySelector('.inputPhoneNumber').value;
 
-    //   if (customerPhone.length > 9 && customerPhone != '+7 (___) ___-__-__') {
-    //     var writeUserData = function writeUserData(name, phone) {
-    //       firebase.database().ref('callers/' + now).set({
-    //         username: name,
-    //         phone: phone
-    //       });
-    //     };
+      //   if (customerPhone.length > 9 && customerPhone != '+7 (___) ___-__-__') {
+      //     var writeUserData = function writeUserData(name, phone) {
+      //       firebase.database().ref('callers/' + now).set({
+      //         username: name,
+      //         phone: phone
+      //       });
+      //     };
 
-        customerPhone = "+" + customerPhone.replace(/\D+/g, '');
-        customerName == "Введите ваше имя" ? customerName = "" : customerName;
+      // customerPhone = "+" + customerPhone.replace(/\D+/g, '');
+      // customerName == "Введите ваше имя" ? customerName = "" : customerName;
 
-        // var now = new Date();
-		//
-        // writeUserData(customerName, customerPhone); //отправляем данные в базу firebase
+      // var now = new Date();
+      //
+      // writeUserData(customerName, customerPhone); //отправляем данные в базу firebase
 
-        popUpCover = document.createElement('div');
+      popUpCover = document.createElement('div');
 
-        popUpCover.className = "popUpWrapper";
-        popUpCover.innerHTML = "\
+      popUpCover.className = "popUpWrapper";
+      popUpCover.innerHTML = "\
             <div class = 'popUpContainer'>\
                 <a class = 'closeButton2'><img src='img/x.png' alt='' width='13' height='13'></a>\
                   <div class = 'popUpContainerInner'>\
@@ -105,9 +159,8 @@
                     </div>\
                   </div>\
                 </div>";
-      };
     };
-
+  };
 
   function closePopUp() {
     div != undefined ? body.removeChild(div) : "";
@@ -120,18 +173,18 @@
     body.style.overflow = "auto";
   };
 
-  function resetStyleName() {
-    if (document.querySelector('.inputName').value == 'Введите ваше имя') {
-      document.querySelector('.inputName').value = "";
-    };
-
-    document.querySelector('.inputName').style.color = "black";
-  };
-  function resetStylePhone() {
-    console.log("focus");
-    if (document.querySelector('.inputPhoneNumber').value == '+7 (___) ___-__-__') {
-      document.querySelector('.inputPhoneNumber').value = "";
-      document.querySelector('.inputPhoneNumber').style.color = "black";
-    };
-  };
+  // function resetStyleName() {
+  //   if (document.querySelector('.inputName').value == 'Введите ваше имя') {
+  //     document.querySelector('.inputName').value = "";
+  //   };
+  //
+  //   document.querySelector('.inputName').style.color = "black";
+  // };
+  // function resetStylePhone() {
+  //   console.log("focus");
+  //   if (document.querySelector('.inputPhoneNumber').value == '+7 (___) ___-__-__') {
+  //     document.querySelector('.inputPhoneNumber').value = "";
+  //     document.querySelector('.inputPhoneNumber').style.color = "black";
+  //   };
+  // };
 })();

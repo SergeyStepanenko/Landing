@@ -27,6 +27,7 @@ gulp.task('common-js', function() {
 
 gulp.task('js', ['common-js'], function() {
 	return gulp.src([
+		'app/libs/*.js',
 		'app/js/slider.js',
 		'app/js/popUp.js',
 		'app/js/common.min.js', // Всегда в конце

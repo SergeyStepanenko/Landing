@@ -70,10 +70,15 @@
     border: 2px solid #EAEAEA
     color: #FEFEFE
     background-color: #578EDF
+    // background-color: #CBCBCB
     font: 15px $medium
     padding: 8px
     width: 214px
     transition: all .19s ease-in-out
+
+.submitData:hover
+	background-color: #4C80D6
+	transition: all .08s ease-in-out
 
 .popUpContainer
 	background-image: url('../img/pop-up-bkg.png')
@@ -86,3 +91,29 @@
 	position: relative
 	left: -166px
 	top: 2px
+
+.inputName:focus,
+.inputPhoneNumber:focus
+	border: 1px solid #578EDF
+
+.success-icon
+	display: none
+	position: relative
+	top: 4px
+	right: 30px
+
+.visible
+	display: inline-block !important
+
+.error-visible
+	display: block !important
+
+.error
+	display: none
+	width: 210px
+	height: 0px
+	font: 12px $default-font
+	color: red
+	position: relative
+	left: 25px
+	bottom: 8px
