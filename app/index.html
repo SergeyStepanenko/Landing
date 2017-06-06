@@ -20,7 +20,12 @@
 	<!-- iOS Safari -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/slider-range.css">
     <link rel="stylesheet" href="css/style_reset.css">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+
 </head>
     <body>
         <section class="screen-1">
@@ -141,6 +146,30 @@
                 </div>
             </div>
         </section>
+
+		<section class="screen-5-v2">
+			<p class="space-3"></p>
+			<h3 class="screen-2__subtitle">Рассчитать стоимость лендинга</h3>
+			<p class="space-4"></p>
+			<div class="screen-5-v2__wrapper">
+				<div class="screen-5-v2__wrapper__block">
+					<h4>Почему наши цены такие низкие?</h4>
+					<p>Каждый веб-разработчик знает, что такое текст-«рыба». Текст этот, несмотря на название, не имеет никакого отношения к обитателям водоемов. Используется он веб-дизайнерами для вставки на интернет-страницы и демонстрации внешнего вида контента, просмотра шрифтов, абзацев, отступов и т.д. Так как цель применения такого текста исключительно демонстрационная, то и смысловую нагрузку ему нести совсем необязательно. Более того, нечитабельность текста сыграет на руку при оценке качества восприятия макета.</p>
+					<p>Самым известным «рыбным» текстом является знаменитый Lorem ipsum. Считается, что впервые его применили в книгопечатании еще в XVI веке. Своим появлением Lorem ipsum обязан древнеримскому философу Цицерону</p>
+				</div>
+				<div class="screen-5-v2__wrapper__calc">
+					<div class="screen-5-v2__wrapper__calc__slider">
+						<p>Количество страниц (экранов)</p>
+						<div class="screen-5-v2__wrapper__calc__slider__range">
+							<div class="slider2"></div>
+							<div id="slider-result">5</div>
+							<input type="hidden" id="hidden"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 
         <section class="screen-6">
             <p class="space-3"></p>
@@ -303,13 +332,27 @@
 			<p class="footer__text">© 2017 AdWebPro. Все права защищены</p>
 		</section>
 
+		<script type="text/javascript">
+			$( ".slider2" ).slider({
+				animate: true,
+				range: "min",
+				value: 5,
+				min: 1,
+				max: 12,
+				step: 1,
 
-    	<script src="js/scripts.min.js"></script>
-		<!-- <script
-		  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
-		  crossorigin="anonymous">
-		 </script> -->
+				//this gets a live reading of the value and prints it on the page
+				slide: function( event, ui ) {
+				   $( "#slider-result" ).html( ui.value );
+				},
 
+				//this updates the hidden form field so we can submit the data using a form
+				change: function(event, ui) {
+				$('#hidden').attr('value', ui.value);
+				}
+			});
+		</script>
+
+	 <script src="js/scripts.min.js"></script>
     </body>
 </html>
