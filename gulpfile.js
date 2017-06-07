@@ -28,8 +28,9 @@ gulp.task('common-js', function() {
 gulp.task('js', ['common-js'], function() {
 	return gulp.src([
 		'app/libs/*.js',
-		'app/js/slider.js',
-		'app/js/popUp.js',
+		// 'app/js/slider.js',
+		// 'app/js/popUp.js',
+		'app/js/custom/*js',
 		'app/js/common.min.js', // Всегда в конце
 		])
     .pipe(babel({presets: ['es2015']}))
@@ -64,7 +65,7 @@ gulp.task('sass', function() {
 
 gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
 	gulp.watch('app/sass/**/*.sass', ['sass']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js', 'app/js/slider.js', 'app/js/popUp.js'], ['js']);
+	gulp.watch(['libs/**/*.js', 'app/js/custom/**/*.js'], ['js']);
 	gulp.watch('app/*.html', browserSync.reload);
 });
 

@@ -21,11 +21,12 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <link rel="stylesheet" href="css/main.min.css">
     <link rel="stylesheet" href="css/slider-range.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style_reset.css">
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&amp;subset=cyrillic" rel="stylesheet">
 </head>
     <body>
         <section class="screen-1">
@@ -159,11 +160,49 @@
 				</div>
 				<div class="screen-5-v2__wrapper__calc">
 					<div class="screen-5-v2__wrapper__calc__slider">
-						<p>Количество страниц (экранов)</p>
-						<div class="screen-5-v2__wrapper__calc__slider__range">
-							<div class="slider2"></div>
-							<div id="slider-result">5</div>
-							<input type="hidden" id="hidden"/>
+						<div class="screen-5-v2__wrapper__calc__slider__block-1">
+							<p>Количество страниц (экранов)</p>
+							<div class="screen-5-v2__wrapper__calc__slider__range">
+								<div class="slider2">
+									<span class="slider2__number-0">0</span>
+									<span class="slider2__number-12">12</span>
+								</div>
+								<div id="slider-result">3</div>
+								<input type="hidden" id="hidden"/>
+							</div>
+						</div>
+						<div class="screen-5-v2__wrapper__calc__slider__block-2">
+							<p>Адаптивный дизайн</p>
+							<div class="screen-5-v2__wrapper__calc__slider__block-2-checkbox checkbox">
+								<input type="checkbox" id="checkbox67" class="css-checkbox lrg" checked="" autocomplete="off"/>
+								<label for="checkbox67" name="checkbox67_lbl" class="css-label lrg web-two-style" autocomplete="off">Да</label>
+							</div>
+						</div>
+						<div class="screen-5-v2__wrapper__calc__slider__block-3">
+							<p>Контактные данные</p>
+							<div class = 'form-calc'>
+								<div class = 'form-calc-email'>
+									<form class="" action="index.html" method="post">
+										<input type="email" class='input-calc' id='email-calc' name='email-calc' placeholder='Email' value=''>
+									</form>
+									<img class='success-icon-calc' id='success-email-calc' src='../img/success.png' alt=''>
+									<p class='error-calc' id='error-email-calc'>Пожалуйста введите верный email</p>
+								</div>
+								<div class = 'form-calc-phone'>
+									<form class="" action="index.html" method="post">
+										<input type="tel" class='input-calc' id='phone-calc' placeholder='+7 (___) ___-__-__' name='phone-calc' value=''>
+									</form>
+						  			<img class='success-icon-calc' id='success-phone-calc' src='../img/success.png' alt=''>
+									<p class='error-calc' id='error-phone-calc'>Пожалуйста заполните это поле</p>
+								</div>
+								<div class="form-calc-calculate">
+									<div class='submitData-price-calc' id="price">14500 РУБ.</div>
+								</div>
+								<div class="form-calc-price">
+									<input id="calculate-submit" class='submitData-calc' type="submit" value='          РАСЧИТАТЬ'><img class='submit-arrow-calc' src='../img/noun_711844_cc.png' alt=''>
+								</div>
+								<p><span class="FZ">(еще в калькуляторе вставь плиз при верстке текст в 2 предложения любой, под результатом.</span> Я туда хочу дописать типа + бесплатно Директ и системы Аналитики</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -333,16 +372,29 @@
 		</section>
 
 		<script type="text/javascript">
+			var sliderValue;
+
+			setTimeout(function() {
+				document.querySelector('.ui-slider-handle').innerHTML = 3;
+			}, 1);
+
 			$( ".slider2" ).slider({
 				animate: true,
 				range: "min",
-				value: 5,
+				value: 3,
 				min: 1,
 				max: 12,
 				step: 1,
 
 				//this gets a live reading of the value and prints it on the page
 				slide: function( event, ui ) {
+					// document.querySelector('.ui-slider-handle').innerHTML = 5;
+					setTimeout(function() {
+						var slider_result = document.getElementById('slider-result').innerHTML;
+						document.querySelector('.ui-slider-handle').innerHTML = slider_result;
+						sliderValue = slider_result;
+					}, 1);
+
 				   $( "#slider-result" ).html( ui.value );
 				},
 

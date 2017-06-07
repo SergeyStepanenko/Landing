@@ -1,5 +1,4 @@
 "use strict";
-
 (function popUp() {
 	const div = document.createElement('div');
 	const body = document.querySelector("body");
@@ -16,21 +15,21 @@
 	div.innerHTML = "\
 			<div class = 'popUpContainer'>\
 					<a class = 'closeButton'><img src='img/x.png' alt='' width='13' height='13'></a>\
-						<div class = 'popUpContainerInner'>\
-							<div class = 'popUpText'>Оставьте ваш email и номер телефона, мы перезвоним, чтобы обсудить ваш лендинг</div>\
-							<div class = 'form'>\
-								<div >\
-	              				<input class='inputName' id='email' name='email' placeholder='Введите ваш email' value=''>\
-					  			<img class='success-icon' id='success-email' src='../img/success.png' alt=''>\
-								<p class='error' id='error-email'>Пожалуйста введите верный email</p>\
-									<input class='inputPhoneNumber' id='phone' placeholder='+7 (___) ___-__-__' name='phone' value=''>\
-								<img class='success-icon' id='success-phone' src='../img/success.png' alt=''>\
-								<p class='error' id='error-phone'>Пожалуйста заполните это поле</p>\
-									<input class='submitData' onsubmit='return true;' type='submit' value='ЗАКАЗАТЬ             '><img class='submit-arrow' src='../img/noun_711844_cc.png' alt=''>\
-								</div>\
+					<div class = 'popUpContainerInner'>\
+						<div class = 'popUpText'>Оставьте ваш email и номер телефона, мы перезвоним, чтобы обсудить ваш лендинг</div>\
+						<div class = 'form'>\
+							<div >\
+              				<input class='inputName' id='email' name='email' placeholder='Введите ваш email' value=''>\
+				  			<img class='success-icon' id='success-email' src='../img/success.png' alt=''>\
+							<p class='error' id='error-email'>Пожалуйста введите верный email</p>\
+								<input class='inputPhoneNumber' id='phone' placeholder='+7 (___) ___-__-__' name='phone' value=''>\
+							<img class='success-icon' id='success-phone' src='../img/success.png' alt=''>\
+							<p class='error' id='error-phone'>Пожалуйста заполните это поле</p>\
+								<input class='submitData' onsubmit='return true;' type='submit' value='ЗАКАЗАТЬ             '><img class='submit-arrow' src='../img/noun_711844_cc.png' alt=''>\
+						</div>\
 			        </div>\
-			      </div>\
-			    </div>";
+		        </div>\
+		    </div>";
 
   callBtn_1.addEventListener('click', appendChild, false);
   callBtn_2.addEventListener('click', appendChild, false);
@@ -74,7 +73,7 @@
 	    function phoneCheck(event) {
 	      var phone = document.getElementById('phone').value;
 
-	      if (phone.search(/[a-zа-яА-ЯёЁ]/g) === -1 && phone.charAt(phone.length - 1) !== '_') {
+	      if (phone.search(/[a-zа-яА-ЯёЁ]/g) === -1 && phone.charAt(phone.length - 1) !== '_' && phone !== '') {
 	        phoneIcon.classList.add('visible');
 			phoneErrorText.classList.remove('error-visible');
 	      } else {
@@ -111,6 +110,7 @@
 			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			http.onreadystatechange = function() {//Call a function when the state changes.
 				if(http.readyState === 4 && http.status === 200) {
+					console.log('data sent');
 					popUpCover = document.createElement('div');
 					popUpCover.className = "popUpWrapper";
 					popUpCover.innerHTML = "\
