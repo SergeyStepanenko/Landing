@@ -42,35 +42,12 @@ let checkBox = false;
 (function() {
 	const submitBtn = document.getElementById('calculate-submit');
 	submitBtn.addEventListener('click', calculateAndSubmit);
-	sliderValue = 3;
+	let sliderValue = 3;
 
 	function calculateAndSubmit() {
-		const step = 2000;
-		const startValue = 14500;
-		let value;
-
-		if (sliderValue <= 3) {
-			value = startValue;
-		}
-
-		if (sliderValue > 3 && sliderValue < 11) {
-			value = startValue + (step * (sliderValue - 3));
-		}
-
-		if (sliderValue > 10) {
-			value = 'Индивидуальный расчет';
-			priceBlock.innerHTML = value;
-		} else {
-			if (document.getElementById("checkbox67").checked === true) {
-				checkBox = true;
-				value += 3000;
-			}
-			priceBlock.innerHTML = value + ' РУБ.';
-		}
-
 		if (!showError()) {
 			sendData();
-		};
+		}
 	}
 
 	function showError() {
@@ -102,7 +79,30 @@ let checkBox = false;
 		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		http.onreadystatechange = function() {//Call a function when the state changes.
 			if(http.readyState === 4 && http.status === 200) {
+				const step = 2000;
+				const startValue = 14500;
+				let value;
+
 				console.log('data sent');
+
+				if (sliderValue <= 3) {
+					value = startValue;
+				}
+
+				if (sliderValue > 3 && sliderValue < 11) {
+					value = startValue + (step * (sliderValue - 3));
+				}
+
+				if (sliderValue > 10) {
+					value = 'Индивидуальный расчет';
+					priceBlock.innerHTML = value;
+				} else {
+					if (document.getElementById('checkbox67').checked === true) {
+						checkBox = true;
+						value += 3000;
+					}
+					priceBlock.innerHTML = value + ' РУБ.';
+				}
 			}
 		}
 		http.send(params);

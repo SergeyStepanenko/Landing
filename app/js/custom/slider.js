@@ -52,6 +52,6 @@
 
 			leftArrow.addEventListener('click', moveBlocks);
 			rightArrow.addEventListener('click', moveBlocks);
-		}, 1000);
+		}, 700);
 	}
 })();
