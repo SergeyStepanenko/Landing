@@ -1,5 +1,5 @@
 <?
-    $to = 'grover2006@yandex.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
+    $to = 'moilend@adwebpro.ru, s.kaginyan@mail.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
     $subject = 'Заявка c AdWebPro.ru'; //Загаловок сообщения
 	$email = strip_tags($_POST['email']);
     $phone = strip_tags($_POST['phone']);
